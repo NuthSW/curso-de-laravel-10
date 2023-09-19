@@ -1,11 +1,23 @@
 <?php
 
+use App\Http\Controllers\Adm\{SuporteController};
 use App\Http\Controllers\Admin\{ReplySupportController, SupportController};
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Testes\TesteController;
 use Illuminate\Support\Facades\Route;
 
+Route::delete('/suporte/{id}', [SuporteController::class, 'delete'])->name('suporte.delete');
+Route::put('/suporte/{id}', [SuporteController::class, 'update'])->name('suporte.update');
+Route::get('/suporte/{id}/edit', [SuporteController::class, 'edit'])->name('suporte.edit');
+Route::get('/suporte/create', [SuporteController::class, 'create'])->name('suporte.create');
+Route::get('/suporte/{id}', [SuporteController::class, 'show'])->name('suporte.show');
+Route::get('/suporte', [SuporteController::class, 'index'])->name('suporte.index');
+Route::post('/suporte', [SuporteController::class, 'store'])->name('suporte.store');
+
 Route::get('/contato', [SiteController::class, 'contact']);
+
+Route::get('/teste', [TesteController::class, 'teste']);
 
 Route::get('/', function () {
     return view('welcome');
